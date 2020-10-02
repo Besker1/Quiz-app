@@ -106,7 +106,7 @@ const generateQuizQuestion = function (index) {
 };
 
 const generateTrivia = function (index) {
-  console.log('generateTrivia()');
+  console.log('this is the trivia', generateTrivia());
   return `
     <section class="resultsPage" role="region"> 
       <div class="progress">
@@ -136,37 +136,60 @@ const generateResults = function () {
 /********** RENDER FUNCTION(S) **********/
 
 // These functions conditionally replaces the contents of the <main> tag based on the state of myQuiz
-const renderLandingPage = function () {
-  console.log('renderLandingPage()');
-  //generate HTML
-  const landingPageString = generateLandingPage();
-  //insert HTML into DOM
-  $('.quiz').html(landingPageString);
+// const renderLandingPage = function () {
+//   console.log('renderLandingPage()');
+//   //generate HTML
+//   const landingPageString = generateLandingPage();
+//   //insert HTML into DOM
+//   $('.quiz').html(landingPageString);
+// };
+
+// const renderQuestion = function (index) {
+//   console.log('renderQuestion()');
+//   //generate HTML
+//   const quizQuestionString = generateQuizQuestion(index);
+//   //insert HTML into DOM
+//   $('.quiz').html(quizQuestionString);
+// };
+
+// const renderTrivia = function (index) {
+//   console.log('renderTrivia()');
+//   //generate HTML
+//   const triviaString = generateTrivia(index);
+//   //insert HTML into DOM
+//   $('.quiz').html(triviaString);
+// };
+
+let render = () =>  {
+  let newPages = store.newPages;
+  let questionsLength = store.questions.length;
+  let item = '';
+
+  if (newPages === 'intro') {
+    item = generateLandingPage ();
+  } else if (newPages === 'question') {
+    let question = store.questions[store.questionNumber];
+    let questionNumber = store.questionNumber;
+    let score = store.score;
+
+    item = generateQuestionPages(question, questionNumber, score, questionsLength);
+  } else if (newPages === 'feedback') {
+    let correct = store.correct;
+    let question = store.questions[store.questionNumber];
+
+
+    item = feedBackPage(correct, question);
+  } else if (newPages === 'results') {
+    let score = store.score;
+
+    item = generateResults(score, questionsLength);
+  } else {
+    return 'try someting else';
+  }
+
+  $('main').html(item);
 };
 
-const renderQuestion = function (index) {
-  console.log('renderQuestion()');
-  //generate HTML
-  const quizQuestionString = generateQuizQuestion(index);
-  //insert HTML into DOM
-  $('.quiz').html(quizQuestionString);
-};
-
-const renderTrivia = function (index) {
-  console.log('renderTrivia()');
-  //generate HTML
-  const triviaString = generateTrivia(index);
-  //insert HTML into DOM
-  $('.quiz').html(triviaString);
-};
-
-const renderResults = function () {
-  console.log('renderResults()');
-  //generate HTML
-  const resultsString = generateResults();
-  //insert HTML into DOM
-  $('.quiz').html(resultsString);
-};
 
 /********** EVENT HANDLER FUNCTIONS **********/
 
@@ -194,6 +217,10 @@ const handleSubmitClicked = function () {
 
 const handleNextQuestionClicked = function () {
   console.log('handleNextQuestionClicked()');
+  $('.next').on('click',function(event){
+    event.preventDefault();
+    renderQuestion(myQuiz.currentQuestion);
+  });
 };
 
 const handleShowScoreClicked = function () {
@@ -214,6 +241,7 @@ const handleQuizzApp = function () {
   handleNextQuestionClicked();
   handleShowScoreClicked();
   handleRestartClicked();
+  render();
 };
 
 // Call handleQuizzApp() when the page loads
