@@ -101,9 +101,8 @@ const generateQuizQuestion = function (index) {
   console.log('generateQuizQuestion()');
   return `
     <section class="questionForms" role="region">
-      <div class="progress">
-        <div class="correctBar"></div>
-        <div class="totalBar"></div>
+      <div class="prog">
+        <h2 class="currentQuetion"> Question number ${myQuiz.currentQuestion} out of ${myQuiz.questionList.length}</h2>
       </div>
       <h3 id="question">${myQuiz.questionList[index].question}</h3>
       <form id="frmSubmit" action="#" class="js-question-submit">
@@ -147,6 +146,7 @@ const generateResults = function () {
   return `
     <section class="end" role="region">
        <h1 id="score"></h1>
+        <h2> you score ${myQuiz.correctTally} out of ${myQuiz.questionList.length}</h2>
        <img id="scorepic" alt="reaction to your score" src="${imageString}">
        <button id="restart">Restart Quiz</button>
     </section>
@@ -203,17 +203,6 @@ const handleBeginQuizClicked = function () {
   });
 };
 
-// moves the progress bar as user gets correct answer
-function progressBarCorrect() {
-  let width = (myQuiz.correctTally / myQuiz.questionList.length) * 100;
-  $('.correctBar').css('width', `${width}%`);
-}
-
-// moves the progress bar as user moves through the questions
-function progressBarTotal() {
-  let width = ((myQuiz.currentQuestion + 1) / myQuiz.questionList.length) * 100;
-  $('.totalBar').css('width', `${width}%`);
-}
 
 const handleSubmitClicked = function () {
   console.log('handleSubmitClicked()');
@@ -234,14 +223,10 @@ const handleSubmitClicked = function () {
         //correctAnswer();
         myQuiz.correctTally++;
         renderTrivia(myQuiz.currentQuestion);
-        progressBarTotal();
-        progressBarCorrect();
         $('#resultText').text(myQuiz.result[0]).css('color', '#00FF33');
       } else {
         //wrongAnswer();
         renderTrivia(myQuiz.currentQuestion);
-        progressBarTotal();
-        progressBarCorrect();
         $('#resultText').text(myQuiz.result[1]).css('color', 'red');
       }
     } else {
@@ -257,12 +242,10 @@ const handleNextQuestionClicked = function () {
     if (myQuiz.currentQuestion < myQuiz.totalQuestions) {
       myQuiz.currentQuestion++;
       renderQuestion(myQuiz.currentQuestion);
-      progressBarTotal();
-      progressBarCorrect();
+     
     } else {
       renderResults();
-      progressBarTotal();
-      progressBarCorrect();
+   
     }
   });
   console.log('handleNextQuestionClicked()');
