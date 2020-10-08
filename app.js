@@ -251,10 +251,6 @@ const handleNextQuestionClicked = function () {
   console.log('handleNextQuestionClicked()');
 };
 
-const handleShowScoreClicked = function () {
-  console.log('handleShowScoreClicked()');
-};
-
 const handleRestartClicked = function () {
   console.log('handleRestartClicked()');
   $('main').on('click', `#restart`, (event) => {
@@ -270,7 +266,6 @@ const handleQuizzApp = function () {
   handleBeginQuizClicked();
   handleSubmitClicked();
   handleNextQuestionClicked();
-  handleShowScoreClicked();
   handleRestartClicked();
 };
 
