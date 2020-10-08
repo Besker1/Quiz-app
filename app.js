@@ -103,6 +103,7 @@ const generateQuizQuestion = function (index) {
     <section class="questionForms" role="region">
       <div class="prog">
         <h2 class="currentQuetion"> Question number ${myQuiz.currentQuestion} out of ${myQuiz.questionList.length}</h2>
+        <h2>Your current score is ${myQuiz.correctTally} out of ${myQuiz.questionList.length}</h2>
       </div>
       <h3 id="question">${myQuiz.questionList[index].question}</h3>
       <form id="frmSubmit" action="#" class="js-question-submit">
@@ -146,7 +147,7 @@ const generateResults = function () {
   return `
     <section class="end" role="region">
        <h1 id="score"></h1>
-        <h2> you score ${myQuiz.correctTally} out of ${myQuiz.questionList.length}</h2>
+        <h2> You score total of ${myQuiz.correctTally} out of ${myQuiz.questionList.length}</h2>
        <img id="scorepic" alt="reaction to your score" src="${imageString}">
        <button id="restart">Restart Quiz</button>
     </section>
