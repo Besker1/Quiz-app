@@ -1,3 +1,2 @@
-### Boilerplate app structure for Quiz App project
-
-
+  5 question quizApp to test your knowledge in astronomy
+ 
