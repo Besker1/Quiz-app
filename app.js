@@ -102,7 +102,7 @@ const generateQuizQuestion = function (index) {
   return `
     <section class="questionForms" role="region">
       <div class="prog">
-        <h2 class="currentQuetion"> Question number ${myQuiz.currentQuestion} out of ${myQuiz.questionList.length}</h2>
+        <h2 class="currentQuetion"> Question number ${myQuiz.currentQuestion+1} out of ${myQuiz.questionList.length}</h2>
         <h2>Your current score is ${myQuiz.correctTally} out of ${myQuiz.questionList.length}</h2>
       </div>
       <h3 id="question">${myQuiz.questionList[index].question}</h3>
