@@ -4,7 +4,7 @@
   
   ## Used jQuery,Html5, CSS to build.
   
-  ## cliked here to try it out yourself. 
+  ## cliked [here to try it out yourself.] 
   
   #### the app is still not fully what i want it to be yet. 
  
