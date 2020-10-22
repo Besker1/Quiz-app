@@ -1,4 +1,4 @@
-  #Astronomy Quiz
+  # Astronomy Quiz
   
   5 question quizApp to test your knowledge in astronomy
   
