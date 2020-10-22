@@ -4,7 +4,7 @@
   
   ## Used jQuery,Html5, CSS to build.
   
-  ## clik *[here to try it out yourself.](https://besker1.github.io/Quiz-app/.)*
+  ## clik *[here to check your knowledge.](https://besker1.github.io/Quiz-app/.)*
   
   #### the app is still not fully what i want it to be yet. 
  
