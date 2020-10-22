@@ -6,9 +6,9 @@
   
   ## cliked here to try it out yourself. 
   
- ** the app is still not fully what i want it to be yet. 
+  #### the app is still not fully what i want it to be yet. 
  
- ** more coming up soon
+ #### more coming up soon
   
  
  
